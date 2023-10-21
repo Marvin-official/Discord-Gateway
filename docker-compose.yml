@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  discord-gateway-rabbit:
+    image: rabbitmq:management
+    container_name: discord-gateway-rabbit
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER:-admin}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS:-admin}
+    ports:
+      - 5672:5672
+      - 15672:15672
+    logging:
+      driver: none
+
+  discord-gateway-server:
+    container_name: discord-gateway-server
+    image: oven/bun:1.0.7-alpine
+    working_dir: /marvin
+    volumes:
+      - .:/marvin
+    tty: true
+    ports:  
+      - 8000:8000
+    environment:
+      PORT: 8000
+      RABBIT_URI: amqp://${RABBITMQ_DEFAULT_USER:-admin}:${RABBITMQ_DEFAULT_PASS:-admin}@discord-gateway-rabbit:5672
+    command: sh -c "bun run start"

@@ -1,0 +1,31 @@
+{
+  "name": "discord-gateway",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "A Discord Gateway API",
+  "author": {
+    "name": "Etienne Quantin",
+    "email": "equantin.pro@danaen.fr"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'bun' src/index.ts",
+    "up": "docker-compose up -d --build"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-node": "^0.3.9",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {}
+}

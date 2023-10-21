@@ -1,0 +1,37 @@
+module.exports = {
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    project: "tsconfig.json",
+    tsconfigRootDir: __dirname,
+    sourceType: "module",
+  },
+  plugins: ["@typescript-eslint/eslint-plugin", "prettier", "import"],
+  extends: [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+  ],
+  root: true,
+  env: {
+    node: true,
+  },
+  ignorePatterns: [".eslintrc.js"],
+  rules: {
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "import/no-unresolved": [2, { caseSensitive: true }],
+    "import/named": 2,
+    "import/default": 2,
+    "import/namespace": 2,
+    "import/no-restricted-paths": 2,
+    "import/no-absolute-path": 2,
+    "import/no-dynamic-require": 2,
+    "import/no-webpack-loader-syntax": 2,
+    "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+    "import/no-mutable-exports": 2,
+    "import/unambiguous": 2,
+  },
+};
